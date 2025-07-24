@@ -129,7 +129,7 @@ class BlinkitScraper {
         );
         if (this.allProducts.length > 0) {
             const csvData = this._convertToCSV(this.allProducts);
-            const fileName = `blinkit_products_${
+            const fileName = `output_${
                 new Date().toISOString().split("T")[0]
             }.csv`;
             this._saveCSV(csvData, fileName);
