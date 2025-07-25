@@ -16,6 +16,7 @@ const CONFIG = {
     // File paths for input data
     CATEGORIES_FILE: "blinkit_categories.csv",
     LOCATIONS_FILE: "blinkit_locations.csv",
+    OUTPUT_FILE: "output_js.csv",
 };
 
 class BlinkitScraper {
@@ -128,11 +129,8 @@ class BlinkitScraper {
             `Scraping complete. Found ${this.allProducts.length} total products.`
         );
         if (this.allProducts.length > 0) {
-            const csvData = this._convertToCSV(this.allProducts);
-            const fileName = `output_${
-                new Date().toISOString().split("T")[0]
-            }.csv`;
-            this._saveCSV(csvData, fileName);
+            const csvData = this._convertToCSV(this.allProducts);;
+            this._saveCSV(csvData, this.config.OUTPUT_FILE);
         } else {
             console.error("No products were found to save.");
         }
